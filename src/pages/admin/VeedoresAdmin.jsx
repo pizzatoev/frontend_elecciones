@@ -16,12 +16,13 @@ import {
   aprobarVeedor, 
   rechazarVeedor 
 } from '../../services/VeedorService';
+import { useRoleValidation } from '../../hooks/useRoleValidation';
+import ErrorAlert from '../../components/ErrorAlert';
 
 const VeedoresAdmin = () => {
   const [veedores, setVeedores] = useState([]);
   const [loading, setLoading] = useState(false);
-  const [error, setError] = useState('');
-  const [success, setSuccess] = useState('');
+  const { error, success, handleError, handleSuccess, clearMessages } = useRoleValidation();
   
   // Estados para el modal de rechazo
   const [showRechazoModal, setShowRechazoModal] = useState(false);
@@ -37,11 +38,11 @@ const VeedoresAdmin = () => {
   const loadVeedores = async () => {
     try {
       setLoading(true);
-      setError('');
+      clearMessages();
       const response = await getAllVeedores();
       setVeedores(response.data);
     } catch (error) {
-      setError('Error al cargar los veedores: ' + (error.response?.data?.message || error.message));
+      handleError(error);
     } finally {
       setLoading(false);
     }
@@ -51,14 +52,13 @@ const VeedoresAdmin = () => {
     if (window.confirm(`¿Está seguro de aprobar la solicitud de ${nombre}?`)) {
       try {
         setProcesando(true);
-        setError('');
-        setSuccess('');
+        clearMessages();
         
         await aprobarVeedor(id);
-        setSuccess('Veedor aprobado exitosamente');
+        handleSuccess('Veedor aprobado exitosamente');
         loadVeedores();
       } catch (error) {
-        setError('Error al aprobar veedor: ' + (error.response?.data?.message || error.message));
+        handleError(error);
       } finally {
         setProcesando(false);
       }
@@ -73,23 +73,22 @@ const VeedoresAdmin = () => {
 
   const handleRechazarConfirm = async () => {
     if (!motivoRechazo.trim()) {
-      setError('Debe ingresar un motivo de rechazo');
+      handleError(new Error('Debe ingresar un motivo de rechazo'));
       return;
     }
 
     try {
       setProcesando(true);
-      setError('');
-      setSuccess('');
+      clearMessages();
       
       await rechazarVeedor(veedorRechazar.id, motivoRechazo);
-      setSuccess('Veedor rechazado exitosamente');
+      handleSuccess('Veedor rechazado exitosamente');
       setShowRechazoModal(false);
       setVeedorRechazar(null);
       setMotivoRechazo('');
       loadVeedores();
     } catch (error) {
-      setError('Error al rechazar veedor: ' + (error.response?.data?.message || error.message));
+      handleError(error);
     } finally {
       setProcesando(false);
     }
@@ -99,7 +98,7 @@ const VeedoresAdmin = () => {
     if (cartaRespaldo) {
       window.open(cartaRespaldo, '_blank');
     } else {
-      setError('No hay carta de respaldo disponible');
+      handleError(new Error('No hay carta de respaldo disponible'));
     }
   };
 
@@ -172,8 +171,12 @@ const VeedoresAdmin = () => {
       )}
 
       {/* Alertas */}
-      {error && <Alert variant="danger" dismissible onClose={() => setError('')}>{error}</Alert>}
-      {success && <Alert variant="success" dismissible onClose={() => setSuccess('')}>{success}</Alert>}
+      <ErrorAlert 
+        error={error} 
+        onClose={clearMessages}
+        variant="danger"
+      />
+      {success && <Alert variant="success" dismissible onClose={clearMessages}>{success}</Alert>}
 
       {/* Tabla de veedores */}
       <Row>

@@ -18,6 +18,19 @@ export const createJurado = (jurado) => {
   return axios.post(API_URL, jurado);
 };
 
+export const createJuradoWithValidation = async (jurado) => {
+  try {
+    const response = await axios.post(API_URL, jurado);
+    return response;
+  } catch (error) {
+    // Manejar específicamente errores de roles duplicados
+    if (error.response?.status === 409) {
+      throw new Error(error.response.data.message || 'Esta persona ya tiene un rol asignado y no puede ser registrada nuevamente.');
+    }
+    throw error;
+  }
+};
+
 export const updateJurado = (id, jurado) => {
   return axios.put(`${API_URL}/${id}`, jurado);
 };

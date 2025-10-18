@@ -18,6 +18,19 @@ export const createVeedor = (veedor) => {
   return axios.post(API_URL, veedor);
 };
 
+export const createVeedorWithValidation = async (veedor) => {
+  try {
+    const response = await axios.post(API_URL, veedor);
+    return response;
+  } catch (error) {
+    // Manejar específicamente errores de roles duplicados
+    if (error.response?.status === 409) {
+      throw new Error(error.response.data.message || 'Esta persona ya tiene un rol asignado y no puede ser registrada nuevamente.');
+    }
+    throw error;
+  }
+};
+
 export const updateVeedor = (id, veedor) => {
   return axios.put(`${API_URL}/${id}`, veedor);
 };

@@ -15,6 +15,7 @@ import {
 import { 
   getAllDelegados, 
   createDelegado, 
+  createDelegadoWithValidation,
   updateDelegado, 
   deleteDelegado,
   toggleHabilitado
@@ -22,6 +23,8 @@ import {
 import { getAllPersonas } from '../../services/PersonaService';
 import { getAllPartidos } from '../../services/PartidoService';
 import { getAllMesas } from '../../services/MesaService';
+import { useRoleValidation } from '../../hooks/useRoleValidation';
+import ErrorAlert from '../../components/ErrorAlert';
 
 const DelegadosAdmin = () => {
   const [delegados, setDelegados] = useState([]);
@@ -29,8 +32,7 @@ const DelegadosAdmin = () => {
   const [partidos, setPartidos] = useState([]);
   const [mesas, setMesas] = useState([]);
   const [loading, setLoading] = useState(false);
-  const [error, setError] = useState('');
-  const [success, setSuccess] = useState('');
+  const { error, success, handleError, handleSuccess, clearMessages } = useRoleValidation();
   
   // Estados para el modal
   const [showModal, setShowModal] = useState(false);
@@ -53,7 +55,7 @@ const DelegadosAdmin = () => {
   const loadData = async () => {
     try {
       setLoading(true);
-      setError('');
+      clearMessages();
       
       const [delegadosRes, personasRes, partidosRes, mesasRes] = await Promise.all([
         getAllDelegados(),
@@ -67,7 +69,7 @@ const DelegadosAdmin = () => {
       setPartidos(partidosRes.data);
       setMesas(mesasRes.data);
     } catch (error) {
-      setError('Error al cargar los datos: ' + (error.response?.data?.message || error.message));
+      handleError(error);
     } finally {
       setLoading(false);
     }
@@ -94,8 +96,7 @@ const DelegadosAdmin = () => {
       });
     }
     setShowModal(true);
-    setError('');
-    setSuccess('');
+    clearMessages();
   };
 
   const handleCloseModal = () => {
@@ -106,8 +107,7 @@ const DelegadosAdmin = () => {
       idMesa: '',
       habilitado: true
     });
-    setError('');
-    setSuccess('');
+    clearMessages();
   };
 
   const handleInputChange = (e) => {
@@ -120,15 +120,15 @@ const DelegadosAdmin = () => {
 
   const validateForm = () => {
     if (!formData.idPersona) {
-      setError('Debe seleccionar una persona');
+      handleError(new Error('Debe seleccionar una persona'));
       return false;
     }
     if (!formData.idPartido) {
-      setError('Debe seleccionar un partido');
+      handleError(new Error('Debe seleccionar un partido'));
       return false;
     }
     if (!formData.idMesa) {
-      setError('Debe seleccionar una mesa');
+      handleError(new Error('Debe seleccionar una mesa'));
       return false;
     }
     return true;
@@ -142,45 +142,45 @@ const DelegadosAdmin = () => {
     }
 
     try {
-      setError('');
-      setSuccess('');
+      clearMessages();
       
       if (isEditing) {
         await updateDelegado(editingId, formData);
-        setSuccess('Delegado actualizado exitosamente');
+        handleSuccess('Delegado actualizado exitosamente');
       } else {
-        await createDelegado(formData);
-        setSuccess('Delegado creado exitosamente');
+        // Usar el método con validación de roles para crear nuevos delegados
+        await createDelegadoWithValidation(formData);
+        handleSuccess('Delegado creado exitosamente');
       }
       
       handleCloseModal();
       loadData();
     } catch (error) {
-      setError('Error al guardar delegado: ' + (error.response?.data?.message || error.message));
+      handleError(error);
     }
   };
 
   const handleDelete = async (id, nombre) => {
     if (window.confirm(`¿Está seguro de eliminar al delegado ${nombre}?`)) {
       try {
-        setError('');
+        clearMessages();
         await deleteDelegado(id);
-        setSuccess('Delegado eliminado exitosamente');
+        handleSuccess('Delegado eliminado exitosamente');
         loadData();
       } catch (error) {
-        setError('Error al eliminar delegado: ' + (error.response?.data?.message || error.message));
+        handleError(error);
       }
     }
   };
 
   const handleToggleHabilitado = async (id, habilitado) => {
     try {
-      setError('');
+      clearMessages();
       await toggleHabilitado(id, habilitado);
-      setSuccess(`Delegado ${habilitado ? 'habilitado' : 'deshabilitado'} exitosamente`);
+      handleSuccess(`Delegado ${habilitado ? 'habilitado' : 'deshabilitado'} exitosamente`);
       loadData();
     } catch (error) {
-      setError('Error al cambiar estado: ' + (error.response?.data?.message || error.message));
+      handleError(error);
     }
   };
 
@@ -248,8 +248,12 @@ const DelegadosAdmin = () => {
       )}
 
       {/* Alertas */}
-      {error && <Alert variant="danger" dismissible onClose={() => setError('')}>{error}</Alert>}
-      {success && <Alert variant="success" dismissible onClose={() => setSuccess('')}>{success}</Alert>}
+      <ErrorAlert 
+        error={error} 
+        onClose={clearMessages}
+        variant="danger"
+      />
+      {success && <Alert variant="success" dismissible onClose={clearMessages}>{success}</Alert>}
 
       {/* Tabla de delegados */}
       <Row>

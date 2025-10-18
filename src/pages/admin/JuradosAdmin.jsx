@@ -14,14 +14,15 @@ import {
   sortearJurados, 
   eliminarSorteo 
 } from '../../services/JuradoService';
+import { useRoleValidation } from '../../hooks/useRoleValidation';
+import ErrorAlert from '../../components/ErrorAlert';
 
 const JuradosAdmin = () => {
   const [jurados, setJurados] = useState([]);
   const [loading, setLoading] = useState(false);
   const [sorteando, setSorteando] = useState(false);
   const [eliminando, setEliminando] = useState(false);
-  const [error, setError] = useState('');
-  const [success, setSuccess] = useState('');
+  const { error, success, handleError, handleSuccess, clearMessages } = useRoleValidation();
 
   // Cargar jurados al montar el componente
   useEffect(() => {
@@ -31,11 +32,11 @@ const JuradosAdmin = () => {
   const loadJurados = async () => {
     try {
       setLoading(true);
-      setError('');
+      clearMessages();
       const response = await getAllJurados();
       setJurados(response.data);
     } catch (error) {
-      setError('Error al cargar los jurados: ' + (error.response?.data?.message || error.message));
+      handleError(error);
     } finally {
       setLoading(false);
     }
@@ -45,14 +46,13 @@ const JuradosAdmin = () => {
     if (window.confirm('¿Está seguro de realizar el sorteo de jurados? Esto asignará nuevos jurados a todas las mesas.')) {
       try {
         setSorteando(true);
-        setError('');
-        setSuccess('');
+        clearMessages();
         
         const response = await sortearJurados();
-        setSuccess(`Sorteo realizado exitosamente. Se asignaron ${response.data.length} jurados.`);
+        handleSuccess(`Sorteo realizado exitosamente. Se asignaron ${response.data.length} jurados.`);
         loadJurados();
       } catch (error) {
-        setError('Error al realizar el sorteo: ' + (error.response?.data?.message || error.message));
+        handleError(error);
       } finally {
         setSorteando(false);
       }
@@ -63,14 +63,13 @@ const JuradosAdmin = () => {
     if (window.confirm('¿Está seguro de eliminar el sorteo actual? Esto eliminará todas las asignaciones de jurados.')) {
       try {
         setEliminando(true);
-        setError('');
-        setSuccess('');
+        clearMessages();
         
         await eliminarSorteo();
-        setSuccess('Sorteo eliminado exitosamente.');
+        handleSuccess('Sorteo eliminado exitosamente.');
         loadJurados();
       } catch (error) {
-        setError('Error al eliminar el sorteo: ' + (error.response?.data?.message || error.message));
+        handleError(error);
       } finally {
         setEliminando(false);
       }
@@ -155,8 +154,12 @@ const JuradosAdmin = () => {
       </Row>
 
       {/* Alertas */}
-      {error && <Alert variant="danger" dismissible onClose={() => setError('')}>{error}</Alert>}
-      {success && <Alert variant="success" dismissible onClose={() => setSuccess('')}>{success}</Alert>}
+      <ErrorAlert 
+        error={error} 
+        onClose={clearMessages}
+        variant="danger"
+      />
+      {success && <Alert variant="success" dismissible onClose={clearMessages}>{success}</Alert>}
 
       {/* Tabla de jurados */}
       <Row>
