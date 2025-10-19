@@ -40,3 +40,38 @@
 .read-the-docs {
   color: #888;
 }
+
+/* Reset del navbar principal para que no se vea afectado por los estilos del sistema electoral */
+.navbar {
+  padding: 0.5rem 1rem !important;
+  min-height: auto !important;
+  background-color: #f8f9fa !important; /* Fondo claro en lugar de gris */
+}
+
+.navbar-brand {
+  font-size: 1.25rem !important;
+  padding: 0.5rem 0 !important;
+}
+
+.navbar-nav .nav-link {
+  padding: 0.5rem 1rem !important;
+  font-size: 1rem !important;
+}
+
+.navbar-toggler {
+  padding: 0.25rem 0.75rem !important;
+  font-size: 1rem !important;
+}
+
+/* Asegurar que el logo mantenga su tamaño normal */
+.navbar-brand img {
+  height: 40px !important;
+  width: auto !important;
+}
+
+/* Reset de contenedores para el navbar */
+.navbar .container {
+  max-width: 100% !important;
+  padding: 0 15px !important;
+}
+

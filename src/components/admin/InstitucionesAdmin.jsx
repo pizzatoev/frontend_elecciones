@@ -1,5 +1,5 @@
 import React from 'react';
-import InstitucionesAdminPage from '../../pages/admin/InstitucionesAdmin';
+import InstitucionesAdminPage from '../../pages/admin/Instituciones/InstitucionesAdmin.jsx';
 
 const InstitucionesAdmin = () => {
   return <InstitucionesAdminPage />;

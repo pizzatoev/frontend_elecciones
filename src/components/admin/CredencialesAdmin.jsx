@@ -1,5 +1,5 @@
 import React from 'react';
-import CredencialesAdminPage from '../../pages/admin/CredencialesAdmin';
+import CredencialesAdminPage from '../../pages/admin/Credenciales/CredencialesAdmin.jsx';
 
 const CredencialesAdmin = () => {
   return <CredencialesAdminPage />;

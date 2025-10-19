@@ -1,0 +1,119 @@
+/**SEBASTIAN FERNANDEZ**/
+
+/* ----- Paleta de colores -----
+Gris principal: #6D6D6D
+Amarillo institucional: ##EDC845
+Amarillo claro hover: #E8D067
+Blanco: #FFFFFF
+--------------------------------*/
+
+body {
+    font-family: "Roboto", sans-serif;
+    background-color: #6D6D6D;
+    margin: 0;
+    padding: 0;
+}
+
+/* --- Navbar --- */
+.navbar {
+    background-color: #FFFFFF;
+    padding: 1rem 2rem;
+    text-align: center;
+    border-bottom: 2px solid #EDC845;
+}
+
+.navbar-title {
+    margin: 0;
+    color: #2E2E2E;
+    font-weight: 600;
+}
+
+/* --- Card de login --- */
+.login-card {
+    background-color: #FFFFFF;
+    border: 10px solid #EDC845;
+    max-width: 500px;
+    max-height: 600px;
+    margin: 5rem auto;
+    padding: 2rem;
+    border-radius: 20px; /* sin bordes redondeados */
+}
+
+.login-header {
+    background-color: #EDC845;
+    padding: 1rem;
+    text-align: center;
+    border-radius: 0 0 0 0;
+    margin-bottom: 2rem;
+    font-weight: bold;
+}
+
+.header-title {
+    margin: 0;
+    font-family: 'Roboto', sans-serif;
+    font-weight: 700;
+    font-size: 1.4rem;
+    color: #1E1E1E; /* Negro institucional */
+}
+
+.login-title {
+    text-align: center;
+    color: #2E2E2E;
+    margin-bottom: 2rem;
+    font-weight: bold;
+}
+
+.login-label {
+    display: block;
+    font-weight: 600;
+    font-family: 'Roboto', sans-serif;
+    color: #2E2E2E;
+    margin-top: 1rem;
+    font-size: 1rem;
+}
+
+/* --- Formulario --- */
+.login-form {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.login-input {
+    padding: 0.8rem;
+    border: none;
+    background-color: #F5F5F5;
+    font-size: 1rem;
+    outline: none;
+}
+
+.login-input:focus {
+    background-color: #EDEDED;
+}
+
+/* --- Botón --- */
+.login-button {
+    background-color: #EDC845;
+    color: #2E2E2E;
+    border: none;
+    padding: 0.8rem;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: background-color 0.2s;
+    font-weight: bold;
+}
+
+.login-button:hover {
+    background-color: #E8D067;
+}
+
+/* --- Footer --- */
+.footer {
+    background-color: #FFFFFF;
+    text-align: center;
+    padding: 1rem;
+    border-top: 2px solid #EDC845;
+    color: #2E2E2E;
+    font-size: 0.9rem;
+}
+

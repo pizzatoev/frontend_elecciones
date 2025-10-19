@@ -1,0 +1,488 @@
+/**SEBASTIAN FERNANDEZ**/
+
+/* Importar fuente Roboto */
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300;500;600;700&display=swap');
+
+/* Variables CSS para la paleta de colores */
+:root {
+  --gris-principal: #6D6D6D;
+  --amarillo-institucional: #EDC845;
+  --amarillo-hover: #E8D067;
+  --blanco: #FFFFFF;
+  --texto-oscuro: #2E2E2E;
+  --texto-muy-oscuro: #1E1E1E;
+  --texto-blanco: #FFFFFF;
+  --input-focus: #EDEDED;
+  --input-normal: #F5F5F5;
+  --alerta-fondo: #f8d7da;
+  --alerta-texto: #721c24;
+}
+
+/* Contenedor principal */
+.container-fluid {
+  background-color: var(--gris-principal);
+  min-height: 100vh;
+  padding: 2rem;
+  font-family: "Roboto", sans-serif;
+}
+
+/* Encabezado de la página */
+.row.mb-4 h2 {
+  color: var(--texto-muy-oscuro);
+  font-size: 1.8rem;
+  font-weight: 700;
+  font-family: "Roboto", sans-serif;
+  margin: 0;
+  text-align: center;
+  background: var(--blanco);
+  padding: 1.5rem;
+  border: 10px solid var(--amarillo-institucional);
+  border-radius: 20px;
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
+  animation: fadeInUp 0.6s ease-out;
+}
+
+/* Tarjetas de estadísticas */
+.card {
+  background: var(--blanco);
+  border: 3px solid var(--amarillo-institucional);
+  border-radius: 15px;
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  animation: fadeInUp 0.8s ease-out;
+  animation-fill-mode: both;
+  margin-bottom: 1.5rem;
+}
+
+.card:nth-child(1) { animation-delay: 0.1s; }
+.card:nth-child(2) { animation-delay: 0.2s; }
+.card:nth-child(3) { animation-delay: 0.3s; }
+.card:nth-child(4) { animation-delay: 0.4s; }
+
+.card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 12px 24px rgba(0, 0, 0, 0.15);
+}
+
+.card-body {
+  padding: 1.5rem;
+  text-align: center;
+}
+
+.card-title {
+  font-size: 1.2rem;
+  font-weight: 600;
+  color: var(--texto-oscuro);
+  margin-bottom: 0.5rem;
+  font-family: "Roboto", sans-serif;
+}
+
+.card-text {
+  font-size: 1rem;
+  font-weight: 500;
+  color: var(--texto-oscuro);
+  font-family: "Roboto", sans-serif;
+}
+
+/* Colores específicos para las estadísticas */
+.text-primary {
+  color: var(--amarillo-institucional) !important;
+  font-size: 2rem;
+  font-weight: 700;
+  font-family: "Roboto", sans-serif;
+}
+
+.text-warning {
+  color: #ffc107 !important;
+  font-size: 2rem;
+  font-weight: 700;
+  font-family: "Roboto", sans-serif;
+}
+
+.text-success {
+  color: #28a745 !important;
+  font-size: 2rem;
+  font-weight: 700;
+  font-family: "Roboto", sans-serif;
+}
+
+.text-danger {
+  color: #dc3545 !important;
+  font-size: 2rem;
+  font-weight: 700;
+  font-family: "Roboto", sans-serif;
+}
+
+/* Alertas */
+.alert {
+  border-radius: 12px;
+  padding: 1rem 1.5rem;
+  font-weight: 500;
+  font-family: "Roboto", sans-serif;
+  margin-bottom: 1rem;
+  animation: fadeInUp 0.4s ease-out;
+}
+
+.alert-danger {
+  background: var(--alerta-fondo);
+  color: var(--alerta-texto);
+  border: 1px solid var(--alerta-texto);
+}
+
+.alert-success {
+  background: #d4edda;
+  color: #155724;
+  border: 1px solid #c3e6cb;
+}
+
+.alert-info {
+  background: #d1ecf1;
+  color: #0c5460;
+  border: 1px solid #bee5eb;
+}
+
+/* Tabla de veedores */
+.table {
+  background: var(--blanco);
+  border-radius: 15px;
+  overflow: hidden;
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+  animation: fadeInUp 0.8s ease-out;
+}
+
+.table thead th {
+  background: var(--texto-muy-oscuro) !important;
+  color: var(--texto-blanco) !important;
+  border: none !important;
+  font-weight: 600;
+  font-family: "Roboto", sans-serif;
+  padding: 1rem;
+  text-align: center;
+}
+
+.table tbody td {
+  border: none !important;
+  padding: 1rem;
+  vertical-align: middle;
+  font-family: "Roboto", sans-serif;
+  color: var(--texto-oscuro);
+  text-align: center;
+}
+
+.table tbody tr {
+  border-bottom: 1px solid #f0f0f0;
+  transition: background-color 0.3s ease;
+}
+
+.table tbody tr:hover {
+  background-color: rgba(237, 200, 69, 0.1);
+}
+
+.table tbody tr:last-child {
+  border-bottom: none;
+}
+
+/* Badges de estado */
+.badge {
+  font-family: "Roboto", sans-serif;
+  font-weight: 500;
+  padding: 0.5rem 0.8rem;
+  border-radius: 8px;
+  font-size: 0.9rem;
+}
+
+.badge.bg-warning {
+  background-color: #ffc107 !important;
+  color: var(--texto-muy-oscuro) !important;
+}
+
+.badge.bg-success {
+  background-color: #28a745 !important;
+  color: var(--texto-blanco) !important;
+}
+
+.badge.bg-danger {
+  background-color: #dc3545 !important;
+  color: var(--texto-blanco) !important;
+}
+
+/* Botones de acción en la tabla */
+.btn-success {
+  background-color: #28a745 !important;
+  color: var(--texto-blanco) !important;
+  border: none !important;
+  box-shadow: none !important;
+  outline: none !important;
+  border-radius: 8px;
+  padding: 0.5rem 1rem;
+  font-size: 0.9rem;
+  font-weight: 600;
+  font-family: "Roboto", sans-serif;
+  transition: all 0.3s ease;
+  margin-right: 0.5rem;
+}
+
+.btn-success:hover,
+.btn-success:focus,
+.btn-success:active {
+  background-color: #218838 !important;
+  color: var(--texto-blanco) !important;
+  transform: translateY(-1px);
+}
+
+.btn-danger {
+  background-color: #dc3545 !important;
+  color: var(--texto-blanco) !important;
+  border: none !important;
+  box-shadow: none !important;
+  outline: none !important;
+  border-radius: 8px;
+  padding: 0.5rem 1rem;
+  font-size: 0.9rem;
+  font-weight: 600;
+  font-family: "Roboto", sans-serif;
+  transition: all 0.3s ease;
+  margin-right: 0.5rem;
+}
+
+.btn-danger:hover,
+.btn-danger:focus,
+.btn-danger:active {
+  background-color: #c82333 !important;
+  color: var(--texto-blanco) !important;
+  transform: translateY(-1px);
+}
+
+.btn-info {
+  background-color: #17a2b8 !important;
+  color: var(--texto-blanco) !important;
+  border: none !important;
+  box-shadow: none !important;
+  outline: none !important;
+  border-radius: 8px;
+  padding: 0.5rem 1rem;
+  font-size: 0.9rem;
+  font-weight: 600;
+  font-family: "Roboto", sans-serif;
+  transition: all 0.3s ease;
+}
+
+.btn-info:hover,
+.btn-info:focus,
+.btn-info:active {
+  background-color: #138496 !important;
+  color: var(--texto-blanco) !important;
+  transform: translateY(-1px);
+}
+
+/* Modal */
+.modal-content {
+  border: 10px solid var(--amarillo-institucional);
+  border-radius: 20px;
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
+  font-family: "Roboto", sans-serif;
+}
+
+.modal-header {
+  background: var(--amarillo-institucional);
+  color: var(--texto-muy-oscuro);
+  border: none;
+  border-radius: 10px 10px 0 0;
+  padding: 1.5rem;
+}
+
+.modal-title {
+  font-size: 1.4rem;
+  font-weight: 700;
+  font-family: "Roboto", sans-serif;
+  margin: 0;
+}
+
+.modal-body {
+  padding: 2rem;
+  background: var(--blanco);
+}
+
+.modal-body p {
+  font-family: "Roboto", sans-serif;
+  color: var(--texto-oscuro);
+  margin-bottom: 1rem;
+}
+
+.modal-body p strong {
+  font-weight: 600;
+  color: var(--texto-muy-oscuro);
+}
+
+.modal-footer {
+  background: var(--blanco);
+  border: none;
+  border-radius: 0 0 10px 10px;
+  padding: 1.5rem 2rem;
+}
+
+/* Formularios del modal */
+.form-label {
+  font-weight: 600;
+  color: var(--texto-oscuro);
+  margin-bottom: 0.8rem;
+  font-family: "Roboto", sans-serif;
+}
+
+.form-control {
+  background: var(--input-normal);
+  border: none;
+  padding: 0.8rem;
+  border-radius: 12px;
+  font-size: 1rem;
+  font-family: "Roboto", sans-serif;
+  transition: background-color 0.3s ease;
+}
+
+.form-control:focus {
+  background: var(--input-focus);
+  box-shadow: 0 0 0 3px rgba(237, 200, 69, 0.3);
+  border: none;
+}
+
+/* Botones del modal */
+.btn-secondary {
+  background-color: var(--gris-principal) !important;
+  color: var(--texto-blanco) !important;
+  border: none !important;
+  box-shadow: none !important;
+  outline: none !important;
+  border-radius: 12px;
+  padding: 0.8rem 1.5rem;
+  font-size: 1rem;
+  font-weight: 600;
+  font-family: "Roboto", sans-serif;
+  transition: all 0.3s ease;
+}
+
+.btn-secondary:hover,
+.btn-secondary:focus,
+.btn-secondary:active {
+  background-color: #5a5a5a !important;
+  color: var(--texto-blanco) !important;
+  transform: translateY(-1px);
+}
+
+/* Spinner de carga */
+.spinner-border {
+  color: var(--amarillo-institucional);
+}
+
+.text-center .spinner-border {
+  width: 3rem;
+  height: 3rem;
+  margin: 2rem 0;
+}
+
+/* Texto centrado */
+.text-center {
+  font-family: "Roboto", sans-serif;
+  color: var(--texto-oscuro);
+}
+
+/* Texto de error en la tabla */
+.text-danger {
+  color: #dc3545 !important;
+  font-weight: 500;
+  font-family: "Roboto", sans-serif;
+}
+
+.text-muted {
+  color: var(--gris-principal) !important;
+  font-family: "Roboto", sans-serif;
+}
+
+/* Animaciones */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .container-fluid {
+    padding: 1rem;
+  }
+  
+  .row.mb-4 h2 {
+    font-size: 1.6rem;
+    padding: 1.5rem 1rem;
+    border-width: 5px;
+  }
+  
+  .card-body {
+    padding: 1rem;
+  }
+  
+  .modal-body {
+    padding: 1.5rem 1rem;
+  }
+  
+  .modal-footer {
+    padding: 1rem;
+  }
+  
+  .table thead th,
+  .table tbody td {
+    padding: 0.8rem 0.5rem;
+    font-size: 0.9rem;
+  }
+  
+  .btn-sm {
+    padding: 0.4rem 0.8rem;
+    font-size: 0.8rem;
+  }
+  
+  .text-primary,
+  .text-warning,
+  .text-success,
+  .text-danger {
+    font-size: 1.5rem;
+  }
+}
+
+@media (max-width: 576px) {
+  .table-responsive {
+    font-size: 0.8rem;
+  }
+  
+  .modal-title {
+    font-size: 1.2rem;
+  }
+  
+  .form-control {
+    padding: 0.6rem;
+  }
+  
+  .btn {
+    padding: 0.6rem 1rem;
+    font-size: 0.9rem;
+  }
+  
+  .badge {
+    font-size: 0.8rem;
+    padding: 0.4rem 0.6rem;
+  }
+  
+  .card-title {
+    font-size: 1.1rem;
+  }
+  
+  .text-primary,
+  .text-warning,
+  .text-success,
+  .text-danger {
+    font-size: 1.3rem;
+  }
+}

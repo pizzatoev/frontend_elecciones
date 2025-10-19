@@ -1,0 +1,332 @@
+/**SEBASTIAN FERNANDEZ**/
+
+/* Importar fuente Roboto */
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300;500;600;700&display=swap');
+
+/* Variables CSS para la paleta de colores */
+:root {
+  --gris-principal: #6D6D6D;
+  --amarillo-institucional: #EDC845;
+  --amarillo-hover: #E8D067;
+  --blanco: #FFFFFF;
+  --texto-oscuro: #2E2E2E;
+  --texto-muy-oscuro: #1E1E1E;
+  --texto-blanco: #FFFFFF;
+  --input-focus: #EDEDED;
+  --input-normal: #F5F5F5;
+  --alerta-fondo: #f8d7da;
+  --alerta-texto: #721c24;
+}
+
+/* Contenedor principal */
+.container {
+  background-color: var(--gris-principal);
+  min-height: 100vh;
+  padding: 2rem;
+  font-family: "Roboto", sans-serif;
+}
+
+/* Tarjeta principal */
+.card {
+  background: var(--blanco);
+  border: 10px solid var(--amarillo-institucional);
+  border-radius: 20px;
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
+  max-width: 800px;
+  margin: 0 auto;
+  animation: fadeInUp 0.6s ease-out;
+}
+
+/* Encabezado de la tarjeta */
+.card-header {
+  background: var(--amarillo-institucional) !important;
+  color: var(--texto-muy-oscuro) !important;
+  border: none !important;
+  border-radius: 10px 10px 0 0 !important;
+  padding: 1.5rem;
+  text-align: center;
+}
+
+.card-header h3 {
+  font-size: 1.8rem;
+  font-weight: 700;
+  font-family: "Roboto", sans-serif;
+  margin: 0;
+  color: var(--texto-muy-oscuro);
+}
+
+/* Cuerpo de la tarjeta */
+.card-body {
+  padding: 2rem;
+  background: var(--blanco);
+}
+
+/* Títulos de sección */
+h5 {
+  color: var(--texto-muy-oscuro);
+  font-size: 1.3rem;
+  font-weight: 700;
+  font-family: "Roboto", sans-serif;
+  margin-bottom: 1.5rem;
+  padding-bottom: 0.5rem;
+  border-bottom: 3px solid var(--amarillo-institucional);
+}
+
+/* Formularios */
+.form-label {
+  font-weight: 600;
+  color: var(--texto-oscuro);
+  margin-bottom: 0.8rem;
+  font-family: "Roboto", sans-serif;
+  font-size: 1rem;
+}
+
+.form-control {
+  background: var(--input-normal);
+  border: none;
+  padding: 0.8rem;
+  border-radius: 12px;
+  font-size: 1rem;
+  font-family: "Roboto", sans-serif;
+  transition: background-color 0.3s ease;
+  color: var(--texto-oscuro);
+}
+
+.form-control:focus {
+  background: var(--input-focus);
+  box-shadow: 0 0 0 3px rgba(237, 200, 69, 0.3);
+  border: none;
+  outline: none;
+}
+
+.form-control:read-only {
+  background: #e9ecef;
+  color: var(--gris-principal);
+  cursor: not-allowed;
+}
+
+.form-select {
+  background: var(--input-normal);
+  border: none;
+  padding: 0.8rem;
+  border-radius: 12px;
+  font-size: 1rem;
+  font-family: "Roboto", sans-serif;
+  transition: background-color 0.3s ease;
+  color: var(--texto-oscuro);
+}
+
+.form-select:focus {
+  background: var(--input-focus);
+  box-shadow: 0 0 0 3px rgba(237, 200, 69, 0.3);
+  border: none;
+  outline: none;
+}
+
+.form-text {
+  font-family: "Roboto", sans-serif;
+  color: var(--gris-principal);
+  font-size: 0.9rem;
+  margin-top: 0.5rem;
+}
+
+/* Botón principal */
+.btn-success {
+  background-color: var(--amarillo-institucional) !important;
+  color: var(--texto-oscuro) !important;
+  border: none !important;
+  box-shadow: none !important;
+  outline: none !important;
+  border-radius: 12px;
+  padding: 1rem 2rem;
+  font-size: 1.1rem;
+  font-weight: 600;
+  font-family: "Roboto", sans-serif;
+  transition: all 0.3s ease;
+  width: 100%;
+}
+
+.btn-success:hover,
+.btn-success:focus,
+.btn-success:active {
+  background-color: var(--amarillo-hover) !important;
+  color: var(--texto-oscuro) !important;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.btn-success:disabled {
+  background-color: var(--gris-principal) !important;
+  color: var(--texto-blanco) !important;
+  cursor: not-allowed;
+  transform: none;
+  box-shadow: none;
+}
+
+/* Alertas */
+.alert {
+  border-radius: 12px;
+  padding: 1rem 1.5rem;
+  font-weight: 500;
+  font-family: "Roboto", sans-serif;
+  margin-bottom: 1.5rem;
+  animation: fadeInUp 0.4s ease-out;
+}
+
+.alert-danger {
+  background: var(--alerta-fondo);
+  color: var(--alerta-texto);
+  border: 1px solid var(--alerta-texto);
+}
+
+.alert-success {
+  background: #d4edda;
+  color: #155724;
+  border: 1px solid #c3e6cb;
+}
+
+/* Spinner de carga */
+.spinner-border {
+  color: var(--amarillo-institucional);
+  width: 3rem;
+  height: 3rem;
+}
+
+.text-center {
+  font-family: "Roboto", sans-serif;
+  color: var(--texto-oscuro);
+  padding: 2rem;
+}
+
+.text-center p {
+  font-size: 1.1rem;
+  font-weight: 500;
+  margin-top: 1rem;
+}
+
+/* Grid de botones */
+.d-grid {
+  margin-top: 2rem;
+}
+
+/* Filas del formulario */
+.row {
+  margin-bottom: 1rem;
+}
+
+/* Grupos de formulario */
+.form-group {
+  margin-bottom: 1.5rem;
+}
+
+/* Campos de archivo */
+.form-control[type="file"] {
+  padding: 0.6rem;
+  background: var(--input-normal);
+  border: 2px dashed var(--amarillo-institucional);
+  border-radius: 12px;
+  transition: all 0.3s ease;
+}
+
+.form-control[type="file"]:focus {
+  background: var(--input-focus);
+  border-color: var(--amarillo-hover);
+  box-shadow: 0 0 0 3px rgba(237, 200, 69, 0.3);
+}
+
+/* Animaciones */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .container {
+    padding: 1rem;
+  }
+  
+  .card {
+    border-width: 5px;
+    margin: 0;
+  }
+  
+  .card-header h3 {
+    font-size: 1.6rem;
+  }
+  
+  .card-body {
+    padding: 1.5rem 1rem;
+  }
+  
+  h5 {
+    font-size: 1.2rem;
+  }
+  
+  .form-control,
+  .form-select {
+    padding: 0.6rem;
+  }
+  
+  .btn-success {
+    padding: 0.8rem 1.5rem;
+    font-size: 1rem;
+  }
+  
+  .alert {
+    padding: 0.8rem 1rem;
+  }
+}
+
+@media (max-width: 576px) {
+  .card-header {
+    padding: 1rem;
+  }
+  
+  .card-header h3 {
+    font-size: 1.4rem;
+  }
+  
+  .card-body {
+    padding: 1rem;
+  }
+  
+  h5 {
+    font-size: 1.1rem;
+    margin-bottom: 1rem;
+  }
+  
+  .form-label {
+    font-size: 0.9rem;
+  }
+  
+  .form-control,
+  .form-select {
+    padding: 0.5rem;
+    font-size: 0.9rem;
+  }
+  
+  .btn-success {
+    padding: 0.7rem 1rem;
+    font-size: 0.9rem;
+  }
+  
+  .form-text {
+    font-size: 0.8rem;
+  }
+  
+  .spinner-border {
+    width: 2rem;
+    height: 2rem;
+  }
+  
+  .text-center p {
+    font-size: 1rem;
+  }
+}

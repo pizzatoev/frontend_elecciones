@@ -1,0 +1,348 @@
+/**SEBASTIAN FERNANDEZ**/
+
+/* Importar fuente Roboto */
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300;500;600;700&display=swap');
+
+/* Variables CSS para la paleta de colores */
+:root {
+  --gris-principal: #6D6D6D;
+  --amarillo-institucional: #EDC845;
+  --amarillo-hover: #E8D067;
+  --blanco: #FFFFFF;
+  --texto-oscuro: #2E2E2E;
+  --texto-muy-oscuro: #1E1E1E;
+  --texto-blanco: #FFFFFF;
+  --input-focus: #EDEDED;
+  --input-normal: #F5F5F5;
+  --alerta-fondo: #f8d7da;
+  --alerta-texto: #721c24;
+}
+
+/* Reset y configuración base */
+* {
+  box-sizing: border-box;
+}
+
+body {
+  font-family: "Roboto", sans-serif;
+  background-color: var(--gris-principal);
+  margin: 0;
+  padding: 0;
+  min-height: 100vh;
+}
+
+/* Contenedor principal del dashboard */
+.dashboard-content {
+  background: var(--blanco);
+  border: 10px solid var(--amarillo-institucional);
+  border-radius: 20px;
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
+  max-width: 1500px;
+  margin: 0 auto;
+  animation: fadeInUp 0.6s ease-out;
+}
+
+/* Encabezado del dashboard */
+.dashboard-header {
+  background: var(--amarillo-institucional) !important;
+  padding: 1.5rem;
+  text-align: center;
+  color: var(--texto-muy-oscuro) !important;
+  border: none !important;
+  border-radius: 10px 10px 0 0;
+}
+
+.dashboard-title {
+  font-size: 1.8rem;
+  font-weight: 700;
+  color: var(--texto-muy-oscuro);
+  margin: 0;
+  font-family: "Roboto", sans-serif;
+}
+
+.dashboard-subtitle {
+  font-size: 1.1rem;
+  font-weight: 300;
+  color: var(--texto-oscuro);
+  margin: 0.5rem 0 0 0;
+  font-family: "Roboto", sans-serif;
+}
+
+/* Fila de estadísticas */
+.stats-row {
+  padding: 2rem;
+  gap: 1.2rem;
+}
+
+/* Tarjetas de estadísticas */
+.stat-card {
+  background: var(--blanco);
+  border: 3px solid var(--amarillo-institucional);
+  border-radius: 15px;
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  animation: fadeInUp 0.9s ease-out;
+  animation-fill-mode: both;
+}
+
+.stat-card:nth-child(1) { animation-delay: 0.1s; }
+.stat-card:nth-child(2) { animation-delay: 0.2s; }
+.stat-card:nth-child(3) { animation-delay: 0.3s; }
+.stat-card:nth-child(4) { animation-delay: 0.4s; }
+
+.stat-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 12px 24px rgba(0, 0, 0, 0.15);
+}
+
+.stat-card .card-body {
+  padding: 1.5rem;
+  text-align: center;
+}
+
+.stat-icon {
+  background: var(--amarillo-institucional);
+  border-radius: 50%;
+  width: 60px;
+  height: 60px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto 1rem auto;
+  color: var(--texto-muy-oscuro);
+}
+
+.stat-title {
+  font-size: 1rem;
+  font-weight: 600;
+  color: var(--texto-oscuro);
+  margin-bottom: 0.5rem;
+  font-family: "Roboto", sans-serif;
+}
+
+.stat-number {
+  font-size: 2rem;
+  font-weight: 700;
+  color: var(--texto-muy-oscuro);
+  margin: 0;
+  font-family: "Roboto", sans-serif;
+}
+
+/* Fila de botones de acción */
+.action-buttons-row {
+  padding: 0 2rem 2rem 2rem;
+}
+
+.buttons-container {
+  display: flex;
+  gap: 1rem;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+/* Botones de acción */
+.action-button {
+  background-color: var(--amarillo-institucional) !important;
+  color: var(--texto-oscuro) !important;
+  border: none !important;
+  box-shadow: none !important;
+  outline: none !important;
+  border-radius: 12px;
+  padding: 1rem 2rem;
+  font-size: 1rem;
+  font-weight: 600;
+  font-family: "Roboto", sans-serif;
+  transition: background-color 0.2s ease;
+  min-width: 200px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+}
+
+.action-button:hover,
+.action-button:focus,
+.action-button:active {
+  background-color: var(--amarillo-hover) !important;
+  color: var(--texto-oscuro) !important;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.button-icon {
+  font-size: 1.2rem;
+}
+
+/* Sidebar del admin */
+.admin-sidebar {
+  background: var(--texto-muy-oscuro);
+  min-height: 100vh;
+  padding: 0;
+}
+
+.sidebar-header {
+  background: var(--amarillo-institucional);
+  padding: 2rem 1.5rem;
+  text-align: center;
+  border-bottom: 3px solid var(--amarillo-hover);
+}
+
+.admin-logo {
+  margin-bottom: 0.5rem;
+}
+
+.admin-title {
+  font-size: 1.4rem;
+  font-weight: 700;
+  color: var(--texto-muy-oscuro);
+  margin: 0;
+  font-family: "Roboto", sans-serif;
+}
+
+.admin-subtitle {
+  font-size: 1rem;
+  font-weight: 500;
+  color: var(--texto-oscuro);
+  margin: 0;
+  font-family: "Roboto", sans-serif;
+}
+
+/* Menú del admin */
+.admin-menu {
+  padding: 1rem 0;
+}
+
+.menu-item {
+  background: transparent !important;
+  border: none !important;
+  border-radius: 0 !important;
+  padding: 1rem 1.5rem !important;
+  margin: 0.2rem 0;
+  transition: all 0.3s ease;
+  cursor: pointer;
+}
+
+.menu-item:hover {
+  background: rgba(237, 200, 69, 0.1) !important;
+  border-left: 4px solid var(--amarillo-institucional) !important;
+}
+
+.menu-item.active {
+  background: var(--amarillo-institucional) !important;
+  border-left: 4px solid var(--amarillo-hover) !important;
+}
+
+.menu-item-content {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.menu-icon {
+  color: var(--texto-blanco);
+  font-size: 1.2rem;
+}
+
+.menu-item.active .menu-icon {
+  color: var(--texto-muy-oscuro);
+}
+
+.menu-label {
+  color: var(--texto-blanco);
+  font-weight: 500;
+  font-size: 1rem;
+  font-family: "Roboto", sans-serif;
+}
+
+.menu-item.active .menu-label {
+  color: var(--texto-muy-oscuro);
+  font-weight: 600;
+}
+
+/* Área de contenido del admin */
+.admin-content {
+  background: var(--gris-principal);
+  min-height: 100vh;
+  padding: 2rem;
+}
+
+/* Animaciones */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .dashboard-title {
+    font-size: 1.6rem;
+  }
+  
+  .dashboard-content {
+    margin: 1rem;
+    border-width: 5px;
+  }
+  
+  .stats-row {
+    padding: 1.5rem 1rem;
+  }
+  
+  .action-buttons-row {
+    padding: 0 1rem 1.5rem 1rem;
+  }
+  
+  .buttons-container {
+    flex-direction: column;
+    align-items: center;
+  }
+  
+  .action-button {
+    width: 100%;
+    min-width: auto;
+  }
+  
+  .admin-content {
+    padding: 1rem;
+  }
+  
+  .sidebar-header {
+    padding: 1.5rem 1rem;
+  }
+  
+  .admin-title {
+    font-size: 1.2rem;
+  }
+  
+  .menu-item {
+    padding: 0.8rem 1rem !important;
+  }
+  
+  .menu-label {
+    font-size: 0.9rem;
+  }
+}
+
+@media (max-width: 576px) {
+  .stat-card .card-body {
+    padding: 1rem;
+  }
+  
+  .stat-icon {
+    width: 50px;
+    height: 50px;
+  }
+  
+  .stat-number {
+    font-size: 1.5rem;
+  }
+  
+  .button-icon {
+    font-size: 1rem;
+  }
+}
