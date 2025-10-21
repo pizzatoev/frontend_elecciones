@@ -1,8 +1,7 @@
-/**SEBASTIAN FERNANDEZ**/
+/**SEBASTIAN FERNANDEZ - MEJORADO**/
 
 import React from 'react';
 import { Routes, Route, Navigate, useNavigate, useLocation } from 'react-router-dom';
-import { Container, Row, Col, ListGroup, Card, Badge, Button } from 'react-bootstrap';
 import { 
   GeoAlt, 
   Building, 
@@ -14,7 +13,11 @@ import {
   People, 
   CreditCard,
   FileText,
-  House
+  House,
+  ArrowRight,
+  CheckCircle,
+  Clock,
+  Users
 } from 'react-bootstrap-icons';
 import './DashboardAdmin.css';
 
@@ -63,132 +66,163 @@ const DashboardAdmin = () => {
   };
 
   const ResumenInicial = () => (
-    <div className="dashboard-content">
-      <div className="dashboard-header">
-        <h1 className="dashboard-title">Panel de Administración Electoral</h1>
-        <p className="dashboard-subtitle">Sistema de Gestión Electoral de Bolivia</p>
-      </div>
-      
-      <Row className="stats-row">
-        <Col md={3} className="mb-4">
-          <Card className="stat-card jurados-card">
-            <Card.Body className="text-center">
-              <div className="stat-icon">
-                <PersonCheck size={32} />
-              </div>
-              <Card.Title className="stat-title">Jurados Registrados</Card.Title>
-              <h3 className="stat-number">{resumenData.jurados}</h3>
-            </Card.Body>
-          </Card>
-        </Col>
-        <Col md={3} className="mb-4">
-          <Card className="stat-card veedores-pendientes-card">
-            <Card.Body className="text-center">
-              <div className="stat-icon">
-                <Eye size={32} />
-              </div>
-              <Card.Title className="stat-title">Veedores Pendientes</Card.Title>
-              <h3 className="stat-number">{resumenData.veedoresPendientes}</h3>
-            </Card.Body>
-          </Card>
-        </Col>
-        <Col md={3} className="mb-4">
-          <Card className="stat-card veedores-aprobados-card">
-            <Card.Body className="text-center">
-              <div className="stat-icon">
-                <Eye size={32} />
-              </div>
-              <Card.Title className="stat-title">Veedores Aprobados</Card.Title>
-              <h3 className="stat-number">{resumenData.veedoresAprobados}</h3>
-            </Card.Body>
-          </Card>
-        </Col>
-        <Col md={3} className="mb-4">
-          <Card className="stat-card delegados-card">
-            <Card.Body className="text-center">
-              <div className="stat-icon">
-                <Person size={32} />
-              </div>
-              <Card.Title className="stat-title">Delegados</Card.Title>
-              <h3 className="stat-number">{resumenData.delegados}</h3>
-            </Card.Body>
-          </Card>
-        </Col>
-      </Row>
-      
-      <Row className="action-buttons-row">
-        <Col md={12} className="text-center">
-          <div className="buttons-container">
-            <Button 
-              onClick={() => navigate('/registro-veedor/LP-100023')}
-              className="action-button primary-action"
-            >
-              <FileText className="button-icon" />
-              Registrar Nuevo Veedor
-            </Button>
-            <Button 
-              onClick={() => navigate('/dashboard-admin/veedores')}
-              className="action-button secondary-action"
-            >
-              <Eye className="button-icon" />
-              Gestionar Veedores
-            </Button>
+    <div className="admin-dashboard-container">
+      <div className="admin-dashboard-content">
+        <div className="admin-main-card">
+          <div className="admin-dashboard-header">
+            <div className="admin-header-icon">
+              <House size={32} />
+            </div>
+            <div className="admin-header-text">
+              <h1 className="admin-dashboard-title">Panel de Administración Electoral</h1>
+              <p className="admin-dashboard-subtitle">Sistema de Gestión Electoral de Bolivia</p>
+            </div>
           </div>
-        </Col>
-      </Row>
+          
+          <div className="admin-dashboard-body">
+            <div className="admin-stats-grid">
+              <div className="admin-stat-card jurados-stat">
+                <div className="stat-card-header">
+                  <div className="stat-icon jurados-icon">
+                    <PersonCheck size={24} />
+                  </div>
+                  <div className="stat-status">
+                    <CheckCircle size={16} />
+                    <span>Activos</span>
+                  </div>
+                </div>
+                <div className="stat-content">
+                  <h3 className="stat-number">{resumenData.jurados}</h3>
+                  <p className="stat-label">Jurados Registrados</p>
+                </div>
+              </div>
+
+              <div className="admin-stat-card veedores-pendientes-stat">
+                <div className="stat-card-header">
+                  <div className="stat-icon veedores-pendientes-icon">
+                    <Clock size={24} />
+                  </div>
+                  <div className="stat-status pending">
+                    <Clock size={16} />
+                    <span>Pendientes</span>
+                  </div>
+                </div>
+                <div className="stat-content">
+                  <h3 className="stat-number">{resumenData.veedoresPendientes}</h3>
+                  <p className="stat-label">Veedores Pendientes</p>
+                </div>
+              </div>
+
+              <div className="admin-stat-card veedores-aprobados-stat">
+                <div className="stat-card-header">
+                  <div className="stat-icon veedores-aprobados-icon">
+                    <Eye size={24} />
+                  </div>
+                  <div className="stat-status approved">
+                    <CheckCircle size={16} />
+                    <span>Aprobados</span>
+                  </div>
+                </div>
+                <div className="stat-content">
+                  <h3 className="stat-number">{resumenData.veedoresAprobados}</h3>
+                  <p className="stat-label">Veedores Aprobados</p>
+                </div>
+              </div>
+
+              <div className="admin-stat-card delegados-stat">
+                <div className="stat-card-header">
+                  <div className="stat-icon delegados-icon">
+                    <Users size={24} />
+                  </div>
+                  <div className="stat-status">
+                    <CheckCircle size={16} />
+                    <span>Activos</span>
+                  </div>
+                </div>
+                <div className="stat-content">
+                  <h3 className="stat-number">{resumenData.delegados}</h3>
+                  <p className="stat-label">Delegados</p>
+                </div>
+              </div>
+            </div>
+            
+            <div className="admin-action-section">
+              <div className="action-buttons-grid">
+                <button 
+                  onClick={() => navigate('/registro-veedor/LP-100023')}
+                  className="admin-action-button primary-action"
+                >
+                  <FileText className="button-icon" />
+                  <span>Registrar Nuevo Veedor</span>
+                  <ArrowRight className="button-arrow" />
+                </button>
+                <button 
+                  onClick={() => navigate('/dashboard-admin/veedores')}
+                  className="admin-action-button secondary-action"
+                >
+                  <Eye className="button-icon" />
+                  <span>Gestionar Veedores</span>
+                  <ArrowRight className="button-arrow" />
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
   );
 
   return (
-    <Container fluid className="p-0">
-      <Row className="g-0">
-        {/* Sidebar */}
-        <Col md={3} className="admin-sidebar">
-          <div className="sidebar-header">
-            <div className="admin-logo">
-              <h1 className="admin-title">Panel de Administración</h1>
+    <div className="admin-layout">
+      <div className="admin-sidebar">
+        <div className="sidebar-header">
+          <div className="admin-logo">
+            <div className="logo-icon">
+              <House size={28} />
             </div>
-            <p className="admin-subtitle">Sistema Electoral</p>
+            <div className="logo-text">
+              <h1 className="admin-title">Panel de Administración</h1>
+              <p className="admin-subtitle">Sistema Electoral</p>
+            </div>
           </div>
-          <ListGroup variant="flush" className="admin-menu">
-            {menuItems.map((item, index) => {
-              const IconComponent = item.icon;
-              return (
-                <ListGroup.Item
-                  key={index}
-                  action
-                  active={isActive(item.path)}
-                  onClick={() => handleMenuClick(item.path)}
-                  className={`menu-item ${isActive(item.path) ? 'active' : ''}`}
-                >
-                  <div className="menu-item-content">
-                    <IconComponent className="menu-icon" size={20} />
-                    <span className="menu-label">{item.label}</span>
-                  </div>
-                </ListGroup.Item>
-              );
-            })}
-          </ListGroup>
-        </Col>
+        </div>
+        
+        <nav className="admin-menu">
+          {menuItems.map((item, index) => {
+            const IconComponent = item.icon;
+            return (
+              <div
+                key={index}
+                onClick={() => handleMenuClick(item.path)}
+                className={`menu-item ${isActive(item.path) ? 'active' : ''}`}
+              >
+                <div className="menu-item-content">
+                  <IconComponent className="menu-icon" size={20} />
+                  <span className="menu-label">{item.label}</span>
+                  {isActive(item.path) && <ArrowRight className="menu-arrow" size={16} />}
+                </div>
+              </div>
+            );
+          })}
+        </nav>
+      </div>
 
-        {/* Content Area */}
-        <Col md={9} className="admin-content">
-          <Routes>
-            <Route path="/" element={<ResumenInicial />} />
-            <Route path="/ubicacion" element={<UbicacionAdmin />} />
-            <Route path="/partidos" element={<PartidosAdmin />} />
-            <Route path="/instituciones" element={<InstitucionesAdmin />} />
-            <Route path="/jurados" element={<JuradosAdmin />} />
-            <Route path="/veedores" element={<VeedoresAdmin />} />
-            <Route path="/delegados" element={<DelegadosAdmin />} />
-            <Route path="/asistencia" element={<AsistenciaAdmin />} />
-            <Route path="/personas" element={<PersonasAdmin />} />
-            <Route path="/credenciales" element={<CredencialesAdmin />} />
-            <Route path="*" element={<Navigate to="/dashboard-admin" replace />} />
-          </Routes>
-        </Col>
-      </Row>
-    </Container>
+      <div className="admin-content">
+        <Routes>
+          <Route path="/" element={<ResumenInicial />} />
+          <Route path="/ubicacion" element={<UbicacionAdmin />} />
+          <Route path="/partidos" element={<PartidosAdmin />} />
+          <Route path="/instituciones" element={<InstitucionesAdmin />} />
+          <Route path="/jurados" element={<JuradosAdmin />} />
+          <Route path="/veedores" element={<VeedoresAdmin />} />
+          <Route path="/delegados" element={<DelegadosAdmin />} />
+          <Route path="/asistencia" element={<AsistenciaAdmin />} />
+          <Route path="/personas" element={<PersonasAdmin />} />
+          <Route path="/credenciales" element={<CredencialesAdmin />} />
+          <Route path="*" element={<Navigate to="/dashboard-admin" replace />} />
+        </Routes>
+      </div>
+    </div>
   );
 };
 

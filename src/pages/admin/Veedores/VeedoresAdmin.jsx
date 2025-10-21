@@ -19,6 +19,7 @@ import {
   rechazarVeedor 
 } from '../../../services/VeedorService.js';
 import './VeedoresAdmin.css';
+import '../AdminSectionTemplate.css';
 
 const VeedoresAdmin = () => {
   const [veedores, setVeedores] = useState([]);
@@ -129,12 +130,13 @@ const VeedoresAdmin = () => {
   const estadisticas = getEstadisticas();
 
   return (
-    <Container fluid>
-      <Row className="mb-4">
-        <Col>
-          <h2>Gestión de Veedores</h2>
-        </Col>
-      </Row>
+    <div className="admin-section-container">
+      <div className="admin-section-content">
+        <div className="admin-section-card">
+          <div className="admin-section-header">
+            <h2 className="admin-section-title">Gestión de Veedores</h2>
+          </div>
+          <div className="admin-section-body">
 
       {/* Estadísticas */}
       {veedores.length > 0 && (
@@ -311,7 +313,10 @@ const VeedoresAdmin = () => {
           </Button>
         </Modal.Footer>
       </Modal>
-    </Container>
+          </div>
+        </div>
+      </div>
+    </div>
   );
 };
 

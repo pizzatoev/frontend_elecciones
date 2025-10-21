@@ -1,5 +1,3 @@
-/**SEBASTIAN FERNANDEZ**/
-
 import React, { useState } from 'react';
 import { Container, Row, Col, Card, Form, Button, Alert } from 'react-bootstrap';
 import { useNavigate } from 'react-router-dom';
@@ -7,7 +5,8 @@ import {
     Person,
     Eye,
     Building,
-    FileText
+    FileText,
+    Book
 } from 'react-bootstrap-icons';
 import './LoginVoluntario.css';
 
@@ -51,6 +50,10 @@ const LoginVoluntario = () => {
         if (validateCi()) {
             navigate(`/registro-veedor/${encodeURIComponent(ci)}`);
         }
+    };
+
+    const handleAcademia = () => {
+        navigate('/academia/content');
     };
 
     return (
@@ -108,8 +111,8 @@ const LoginVoluntario = () => {
                                                 <FileText className="button-icon" />
                                                 Solicitar
                                             </Button>
-                                            <Button onClick={() => navigate('/academia/content')} className="action-button">
-                                                <FileText className="button-icon" />
+                                            <Button onClick={handleAcademia} className="action-button">
+                                                <Book className="button-icon" />
                                                 Academia
                                             </Button>
                                         </div>

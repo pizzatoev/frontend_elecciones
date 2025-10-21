@@ -23,6 +23,7 @@ import {
 import { getAllPersonas } from '../../../services/PersonaService.js';
 import { getAllPartidos } from '../../../services/PartidoService.js';
 import { getAllMesas } from '../../../services/MesaService.js';
+import '../AdminSectionTemplate.css';
 
 const DelegadosAdmin = () => {
   const [delegados, setDelegados] = useState([]);

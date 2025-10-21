@@ -1,183 +1,236 @@
-/**SEBASTIAN FERNANDEZ**/
-
-/* LoginVoluntario.css - Diseño minimalista y profesional para el sistema electoral */
+/* LoginVoluntario.css - Diseño moderno con glassmorphism y fondo animado */
 
 .login-voluntario-container {
-    min-height: 100vh;
-    background-color: #6D6D6D;
+    height: 100vh;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 25%, #f093fb 50%, #f5576c 75%, #4facfe 100%);
+    background-size: 400% 400%;
+    animation: gradientShift 15s ease infinite;
     display: flex;
     justify-content: center;
     align-items: center;
     padding: 2rem;
+    position: relative;
+    width: 100%;
+    box-sizing: border-box;
+    overflow: hidden;
+}
+
+/* Elementos decorativos de fondo */
+.login-voluntario-container::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: 
+        radial-gradient(circle at 20% 80%, rgba(120, 119, 198, 0.3) 0%, transparent 50%),
+        radial-gradient(circle at 80% 20%, rgba(255, 119, 198, 0.3) 0%, transparent 50%),
+        radial-gradient(circle at 40% 40%, rgba(120, 219, 255, 0.3) 0%, transparent 50%);
+    pointer-events: none;
 }
 
 .login-container {
     position: relative;
-    z-index: 2;
+    z-index: 10;
+    width: 100%;
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 0 1rem;
 }
 
 .main-card {
-    border: 10px solid #EDC845;
-    border-radius: 20px;
+    background: rgba(255, 255, 255, 0.95);
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    border-radius: 25px;
+    box-shadow: 
+        0 20px 40px rgba(0, 0, 0, 0.1),
+        0 0 0 1px rgba(255, 255, 255, 0.1);
     overflow: hidden;
-    background-color: #FFFFFF;
-    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
-    max-width: 800px;
+    animation: fadeInUp 0.8s ease;
     width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+    height: auto;
+    min-height: auto;
 }
 
 .card-header-custom {
-    background-color: #EDC845;
-    padding: 1.5rem;
+    background: linear-gradient(135deg, #F1C40F 0%, #F39C12 100%);
+    padding: 2rem;
     text-align: center;
-    font-weight: 700;
+    border: none;
 }
 
 .main-title {
-    font-size: 1.8rem;
+    font-size: 2rem;
     margin-bottom: 0.5rem;
-    color: #1E1E1E;
-    font-family: 'Roboto', sans-serif;
-    font-weight: bold;
+    color: #333;
+    font-family: 'Poppins', sans-serif;
+    font-weight: 700;
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    line-height: 1.2;
 }
 
 .subtitle {
     font-size: 1.1rem;
-    color: #2E2E2E;
-    font-weight: 300;
+    color: #555;
+    font-weight: 500;
     margin: 0;
+    font-family: 'Poppins', sans-serif;
+    white-space: normal;
+    word-wrap: break-word;
+    line-height: 1.4;
 }
 
 .card-body-custom {
-    padding: 2.5rem 2rem;
+    padding: 2rem;
+    background: rgba(255, 255, 255, 0.8);
+    height: auto;
+    min-height: auto;
 }
 
 .form-label-custom {
     font-weight: 600;
-    color: #2E2E2E;
+    color: #333;
     font-size: 1rem;
     margin-bottom: 0.8rem;
-    font-family: 'Roboto', sans-serif;
+    font-family: 'Poppins', sans-serif;
 }
 
 .form-control-custom {
-    border: none;
-    background-color: #F5F5F5;
-    padding: 0.8rem;
+    border: 2px solid #F1C40F;
+    background-color: rgba(255, 255, 255, 0.9);
+    padding: 1rem;
     font-size: 1rem;
     outline: none;
-    border-radius: 12px;
-    transition: background-color 0.3s ease;
+    border-radius: 15px;
+    transition: all 0.3s ease;
+    font-family: 'Poppins', sans-serif;
+    text-align: center;
 }
 
 .form-control-custom:focus {
-    background-color: #EDEDED;
+    border-color: #F39C12;
+    box-shadow: 0 0 0 3px rgba(241, 196, 15, 0.2);
+    background-color: #fff;
 }
 
-/* --- Nueva estructura de botones --- */
+.form-control-custom::placeholder {
+    color: #A0A0A0;
+    font-weight: 400;
+}
+
+/* Estructura de botones mejorada */
 .buttons-grid {
     display: flex;
     flex-direction: column;
-    gap: 1.2rem;
+    gap: 1.5rem;
     align-items: center;
     width: 100%;
+    margin-top: 1.5rem;
+    height: auto;
+    min-height: auto;
 }
 
 .button-pair {
-    display: flex;
-    gap: 1rem;
-    justify-content: center;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 2.5rem;
     width: 100%;
+    max-width: 1000px;
 }
 
 .button-single {
     display: flex;
     justify-content: center;
     width: 100%;
+    max-width: 1000px;
 }
 
-/* --- Estilo de los botones (sin variantes de Bootstrap) --- */
-.action-button,
-.action-button:link,
-.action-button:visited,
-.action-button:hover,
-.action-button:focus,
-.action-button:active {
-    background-color: #EDC845 !important;
-    color: #2E2E2E !important;
+/* Estilo de botones moderno */
+.action-button {
+    background: linear-gradient(135deg, #F1C40F 0%, #F39C12 100%);
+    color: #333 !important;
     border: none !important;
-    box-shadow: none !important;
+    box-shadow: 0 4px 15px rgba(241, 196, 15, 0.3);
     outline: none !important;
     text-decoration: none !important;
     padding: 1rem;
     font-size: 1rem;
     font-weight: 600;
-    text-transform: none;
-    border-radius: 12px;
-    width: 130px;
-    height: 130px;
+    border-radius: 15px;
+    width: 100%;
+    height: 70px;
+    max-height: 70px;
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    gap: 0.5rem;
+    gap: 0.3rem;
     cursor: pointer;
-    font-family: 'Roboto', sans-serif;
-    transition: background-color 0.2s ease;
+    font-family: 'Poppins', sans-serif;
+    transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
+    flex-shrink: 0;
+}
+
+.action-button::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+    transition: left 0.5s;
 }
 
 .action-button:hover {
-    background-color: #E8D067 !important;
+    background: linear-gradient(135deg, #F39C12 0%, #E67E22 100%);
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(241, 196, 15, 0.4);
+}
+
+.action-button:hover::before {
+    left: 100%;
+}
+
+.action-button:active {
+    transform: translateY(0);
 }
 
 .button-icon {
-    width: 2.2rem;
-    height: 2.2rem;
+    width: 1.8rem;
+    height: 1.8rem;
     margin-bottom: 0.3rem;
+    color: #333;
 }
 
 .alert-custom {
     border: none;
-    border-radius: 12px;
+    border-radius: 15px;
     padding: 1rem 1.5rem;
     font-weight: 500;
-    background-color: #f8d7da;
+    background: linear-gradient(135deg, #f8d7da 0%, #f5c6cb 100%);
     color: #721c24;
-    margin-bottom: 1rem;
-}
-
-/* Responsive design */
-@media (max-width: 768px) {
-    .main-title {
-        font-size: 1.6rem;
-    }
-
-    .card-body-custom {
-        padding: 1.5rem 1rem;
-    }
-
-    .action-button {
-        width: 100%;
-        height: 80px;
-        flex-direction: row;
-        padding: 1rem;
-    }
-
-    .button-icon {
-        width: 1.6rem;
-        height: 1.6rem;
-        margin-right: 0.6rem;
-        margin-bottom: 0;
-    }
-
-    .button-pair,
-    .button-single {
-        flex-direction: column;
-        gap: 0.8rem;
-    }
+    margin-bottom: 1.5rem;
+    font-family: 'Poppins', sans-serif;
+    box-shadow: 0 4px 15px rgba(220, 53, 69, 0.2);
 }
 
 /* Animaciones */
+@keyframes gradientShift {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+}
+
 @keyframes fadeInUp {
     from {
         opacity: 0;
@@ -189,6 +242,85 @@
     }
 }
 
-.main-card {
-    animation: fadeInUp 0.6s ease-out;
+/* Responsive design */
+@media (max-width: 768px) {
+    .login-voluntario-container {
+        padding: 1rem;
+    }
+    
+    .login-container {
+        max-width: 100%;
+        padding: 0 0.5rem;
+    }
+    
+    .main-card {
+        max-width: 100%;
+        width: 100%;
+    }
+    
+    .button-pair {
+        max-width: 100%;
+        gap: 1rem;
+    }
+    
+    .button-single {
+        max-width: 100%;
+    }
+    
+    .main-title {
+        font-size: 1.6rem;
+        white-space: normal;
+    }
+    
+    .card-body-custom {
+        padding: 1.5rem;
+    }
+    
+    .button-pair {
+        grid-template-columns: 1fr;
+        gap: 0.8rem;
+    }
+    
+    .action-button {
+        height: 70px;
+        padding: 1rem;
+    }
+    
+    .button-icon {
+        width: 1.5rem;
+        height: 1.5rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .login-voluntario-container {
+        padding: 0.5rem;
+    }
+    
+    .login-container {
+        padding: 0 0.25rem;
+    }
+    
+    .main-title {
+        font-size: 1.4rem;
+        white-space: normal;
+    }
+    
+    .subtitle {
+        font-size: 1rem;
+    }
+    
+    .card-body-custom {
+        padding: 1rem;
+    }
+    
+    .action-button {
+        height: 60px;
+        font-size: 0.9rem;
+    }
+    
+    .button-icon {
+        width: 1.3rem;
+        height: 1.3rem;
+    }
 }

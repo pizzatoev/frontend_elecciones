@@ -19,6 +19,7 @@ import {
   descargarPdf,
   verQr
 } from '../../../services/CredencialService.js';
+import '../AdminSectionTemplate.css';
 import jsPDF from 'jspdf';
 
 const CredencialesAdmin = () => {

@@ -14,6 +14,7 @@ import {
   Spinner
 } from 'react-bootstrap';
 import './UbicacionAdmin.css';
+import '../AdminSectionTemplate.css';
 import { 
   getAllDepartamentos, createDepartamento, updateDepartamento, deleteDepartamento 
 } from '../../../services/DepartamentoService.js';
@@ -467,12 +468,13 @@ const UbicacionAdmin = () => {
   };
 
   return (
-    <Container fluid>
-      <Row className="mb-4">
-        <Col>
-          <h2>Gestión de Ubicación Electoral</h2>
-        </Col>
-      </Row>
+    <div className="admin-section-container">
+      <div className="admin-section-content">
+        <div className="admin-section-card">
+          <div className="admin-section-header">
+            <h2 className="admin-section-title">Gestión de Ubicación Electoral</h2>
+          </div>
+          <div className="admin-section-body">
 
       {/* Panel de selección en cascada */}
       <Row className="mb-4">
@@ -736,7 +738,10 @@ const UbicacionAdmin = () => {
           </Modal.Footer>
         </Form>
       </Modal>
-    </Container>
+          </div>
+        </div>
+      </div>
+    </div>
   );
 };
 

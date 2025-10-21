@@ -119,119 +119,122 @@ const JuradosAdmin = () => {
   }, {});
 
   return (
-    <Container fluid>
-      <Row className="mb-4">
-        <Col>
-          <h2>Gestión de Jurados</h2>
-        </Col>
-        <Col xs="auto">
-          <Button 
-            variant="success" 
-            onClick={handleSortear}
-            disabled={sorteando || eliminando}
-            className="me-2"
-          >
-            {sorteando ? (
-              <>
-                <Spinner animation="border" size="sm" className="me-2" />
-                Realizando sorteo...
-              </>
-            ) : (
-              'Realizar sorteo de jurados'
-            )}
-          </Button>
-          <Button 
-            variant="danger" 
-            onClick={handleEliminarSorteo}
-            disabled={sorteando || eliminando || jurados.length === 0}
-          >
-            {eliminando ? (
-              <>
-                <Spinner animation="border" size="sm" className="me-2" />
-                Eliminando...
-              </>
-            ) : (
-              'Eliminar sorteo'
-            )}
-          </Button>
-        </Col>
-      </Row>
-
-      {/* Alertas */}
-      {error && <Alert variant="danger" dismissible onClose={() => setError('')}>{error}</Alert>}
-      {success && <Alert variant="success" dismissible onClose={() => setSuccess('')}>{success}</Alert>}
-
-      {/* Tabla de jurados */}
-      <Row>
-        <Col>
-          {loading ? (
-            <div className="text-center">
-              <Spinner animation="border" role="status">
-                <span className="visually-hidden">Cargando...</span>
-              </Spinner>
+    <div className="admin-section-container">
+      <div className="admin-section-content">
+        <div className="admin-section-card">
+          <div className="admin-section-header">
+            <h2 className="admin-section-title">Gestión de Jurados</h2>
+            <div className="admin-section-actions">
+              <Button 
+                variant="success" 
+                onClick={handleSortear}
+                disabled={sorteando || eliminando}
+                className="admin-action-btn"
+              >
+                {sorteando ? (
+                  <>
+                    <Spinner animation="border" size="sm" className="me-2" />
+                    Realizando sorteo...
+                  </>
+                ) : (
+                  'Realizar sorteo de jurados'
+                )}
+              </Button>
+              <Button 
+                variant="danger" 
+                onClick={handleEliminarSorteo}
+                disabled={sorteando || eliminando || jurados.length === 0}
+                className="admin-action-btn"
+              >
+                {eliminando ? (
+                  <>
+                    <Spinner animation="border" size="sm" className="me-2" />
+                    Eliminando...
+                  </>
+                ) : (
+                  'Eliminar sorteo'
+                )}
+              </Button>
             </div>
-          ) : (
-            <>
-              {Object.keys(juradosPorMesa).length === 0 ? (
-                <Alert variant="info">
-                  No hay jurados asignados. Use el botón "Realizar sorteo de jurados" para asignar jurados a las mesas.
-                </Alert>
-              ) : (
-                Object.values(juradosPorMesa).map((grupo, index) => (
-                  <div key={index} className="mb-4">
-                    <h5 className="mb-3">
-                      Mesa {grupo.mesa.numero} - {grupo.mesa.recinto}
-                    </h5>
-                    <Table striped hover responsive>
-                      <thead className="table-dark">
-                        <tr>
-                          <th>CI</th>
-                          <th>Nombre Completo</th>
-                          <th>Cargo</th>
-                          <th>Estado</th>
-                        </tr>
-                      </thead>
-                      <tbody>
-                        {grupo.jurados.map((jurado) => (
-                          <tr key={jurado.id}>
-                            <td><strong>{jurado.personaCi || '-'}</strong></td>
-                            <td>
-                              {jurado.personaNombre || '-'} {jurado.personaApellido || '-'}
-                            </td>
-                            <td>{getCargoBadge(jurado.cargo)}</td>
-                            <td>{getVerificadoBadge(jurado.verificado)}</td>
-                          </tr>
-                        ))}
-                      </tbody>
-                    </Table>
-                  </div>
-                ))
-              )}
-            </>
-          )}
-        </Col>
-      </Row>
+          </div>
 
-      {/* Resumen de estadísticas */}
-      {jurados.length > 0 && (
-        <Row className="mt-4">
-          <Col>
-            <Alert variant="info">
-              <h6>Resumen del Sorteo</h6>
-              <p className="mb-1">
-                <strong>Total de jurados asignados:</strong> {jurados.length}
-              </p>
-              <p className="mb-1">
-                <strong>Mesas con jurados:</strong> {Object.keys(juradosPorMesa).length}
-              </p>
-              <p className="mb-0">
-                <strong>Jurados verificados:</strong> {jurados.filter(j => j.verificado).length}
-              </p>
-            </Alert>
-          </Col>
-        </Row>
-      )}
-    </Container>
+          <div className="admin-section-body">
+            {/* Alertas */}
+            {error && <Alert variant="danger" dismissible onClose={() => setError('')}>{error}</Alert>}
+            {success && <Alert variant="success" dismissible onClose={() => setSuccess('')}>{success}</Alert>}
+
+            {/* Contenido principal */}
+            <div className="admin-content-area">
+              {loading ? (
+                <div className="admin-loading">
+                  <Spinner animation="border" role="status">
+                    <span className="visually-hidden">Cargando...</span>
+                  </Spinner>
+                </div>
+              ) : (
+                <>
+                  {Object.keys(juradosPorMesa).length === 0 ? (
+                    <Alert variant="info">
+                      No hay jurados asignados. Use el botón "Realizar sorteo de jurados" para asignar jurados a las mesas.
+                    </Alert>
+                  ) : (
+                    <div className="admin-tables-container">
+                      {Object.values(juradosPorMesa).map((grupo, index) => (
+                        <div key={index} className="admin-table-section">
+                          <h5 className="admin-table-title">
+                            Mesa {grupo.mesa.numero} - {grupo.mesa.recinto}
+                          </h5>
+                          <Table striped hover responsive className="admin-table">
+                            <thead className="table-dark">
+                              <tr>
+                                <th>CI</th>
+                                <th>Nombre Completo</th>
+                                <th>Cargo</th>
+                                <th>Estado</th>
+                              </tr>
+                            </thead>
+                            <tbody>
+                              {grupo.jurados.map((jurado) => (
+                                <tr key={jurado.id}>
+                                  <td><strong>{jurado.personaCi || '-'}</strong></td>
+                                  <td>
+                                    {jurado.personaNombre || '-'} {jurado.personaApellido || '-'}
+                                  </td>
+                                  <td>{getCargoBadge(jurado.cargo)}</td>
+                                  <td>{getVerificadoBadge(jurado.verificado)}</td>
+                                </tr>
+                              ))}
+                            </tbody>
+                          </Table>
+                        </div>
+                      ))}
+                    </div>
+                  )}
+                </>
+              )}
+            </div>
+
+            {/* Resumen de estadísticas */}
+            {jurados.length > 0 && (
+              <div className="admin-summary">
+                <Alert variant="info">
+                  <h6>Resumen del Sorteo</h6>
+                  <p className="mb-1">
+                    <strong>Total de jurados asignados:</strong> {jurados.length}
+                  </p>
+                  <p className="mb-1">
+                    <strong>Mesas con jurados:</strong> {Object.keys(juradosPorMesa).length}
+                  </p>
+                  <p className="mb-0">
+                    <strong>Jurados verificados:</strong> {jurados.filter(j => j.verificado).length}
+                  </p>
+                </Alert>
+              </div>
+            )}
+          </div>
+        </div>
+      </div>
+    </div>
   );
 };
 

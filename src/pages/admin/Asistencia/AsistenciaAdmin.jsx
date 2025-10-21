@@ -18,6 +18,7 @@ import {
   marcarAusente,
   crearAsistenciasParaMesa
 } from '../../../services/AsistenciaService.js';
+import '../AdminSectionTemplate.css';
 import { getAllMesas } from '../../../services/MesaService.js';
 
 const AsistenciaAdmin = () => {
