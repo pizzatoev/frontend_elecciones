@@ -7,9 +7,9 @@ Amarillo claro hover: #E8D067
 Blanco: #FFFFFF
 --------------------------------*/
 
+/* Body limpio para no afectar el navbar */
 body {
     font-family: "Roboto", sans-serif;
-    background-color: #6D6D6D;
     margin: 0;
     padding: 0;
 }
@@ -26,6 +26,13 @@ body {
     margin: 0;
     color: #2E2E2E;
     font-weight: 600;
+}
+
+/* --- Contenedor con fondo gris --- */
+.login-admin-container {
+    background-color: #6D6D6D;
+    min-height: 100vh;
+    padding: 2rem;
 }
 
 /* --- Card de login --- */

@@ -45,7 +45,7 @@
 .navbar {
   padding: 0.5rem 1rem !important;
   min-height: auto !important;
-  background-color: #f8f9fa !important; /* Fondo claro en lugar de gris */
+  background-color: #ffffff !important; /* Fondo blanco explícito */
 }
 
 .navbar-brand {

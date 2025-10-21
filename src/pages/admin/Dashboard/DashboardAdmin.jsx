@@ -70,51 +70,51 @@ const DashboardAdmin = () => {
       </div>
       
       <Row className="stats-row">
-        <Col md={3} className="mb-4">
-          <Card className="stat-card jurados-card">
-            <Card.Body className="text-center">
-              <div className="stat-icon">
-                <PersonCheck size={32} />
-              </div>
-              <Card.Title className="stat-title">Jurados Registrados</Card.Title>
-              <h3 className="stat-number">{resumenData.jurados}</h3>
-            </Card.Body>
-          </Card>
-        </Col>
-        <Col md={3} className="mb-4">
-          <Card className="stat-card veedores-pendientes-card">
-            <Card.Body className="text-center">
-              <div className="stat-icon">
-                <Eye size={32} />
-              </div>
-              <Card.Title className="stat-title">Veedores Pendientes</Card.Title>
-              <h3 className="stat-number">{resumenData.veedoresPendientes}</h3>
-            </Card.Body>
-          </Card>
-        </Col>
-        <Col md={3} className="mb-4">
-          <Card className="stat-card veedores-aprobados-card">
-            <Card.Body className="text-center">
-              <div className="stat-icon">
-                <Eye size={32} />
-              </div>
-              <Card.Title className="stat-title">Veedores Aprobados</Card.Title>
-              <h3 className="stat-number">{resumenData.veedoresAprobados}</h3>
-            </Card.Body>
-          </Card>
-        </Col>
-        <Col md={3} className="mb-4">
-          <Card className="stat-card delegados-card">
-            <Card.Body className="text-center">
-              <div className="stat-icon">
-                <Person size={32} />
-              </div>
-              <Card.Title className="stat-title">Delegados</Card.Title>
-              <h3 className="stat-number">{resumenData.delegados}</h3>
-            </Card.Body>
-          </Card>
-        </Col>
-      </Row>
+  <Col md={3} className="mb-4">
+    <div className="stat-card jurados-card">
+      <div className="stat-card-body">
+        <div className="stat-icon">
+          <PersonCheck size={32} />
+        </div>
+        <div className="stat-title">Jurados Registrados</div>
+        <h3 className="stat-number">{resumenData.jurados}</h3>
+      </div>
+    </div>
+  </Col>
+  <Col md={3} className="mb-4">
+    <div className="veedores-pendientes-card">
+      <div className="stat-card-body">
+        <div className="stat-icon">
+          <Eye size={32} />
+        </div>
+        <div className="stat-title">Veedores Pendientes</div>
+        <h3 className="stat-number">{resumenData.veedoresPendientes}</h3>
+      </div>
+    </div>
+  </Col>
+  <Col md={3} className="mb-4">
+    <div className="veedores-aprobados-card">
+      <div className="stat-card-body">
+        <div className="stat-icon">
+          <Eye size={32} />
+        </div>
+        <div className="stat-title">Veedores Aprobados</div>
+        <h3 className="stat-number">{resumenData.veedoresAprobados}</h3>
+      </div>
+    </div>
+  </Col>
+  <Col md={3} className="mb-4">
+    <div className="delegados-card">
+      <div className="stat-card-body">
+        <div className="stat-icon">
+          <Person size={32} />
+        </div>
+        <div className="stat-title">Delegados</div>
+        <h3 className="stat-number">{resumenData.delegados}</h3>
+      </div>
+    </div>
+  </Col>
+</Row>
       
       <Row className="action-buttons-row">
         <Col md={12} className="text-center">
